@@ -48,7 +48,7 @@ export default function Header({message}) {
         <div className="quote">
           <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
           <blockquote>
-            <p>{randomQuote.text}</p>
+            <p style={{backgroundColor:"#fff"}}>{randomQuote.text}</p>
           </blockquote>
           <FontAwesomeIcon icon={faQuoteRight} className="quote-icon" />
           <cite>- {randomQuote.author}</cite>
