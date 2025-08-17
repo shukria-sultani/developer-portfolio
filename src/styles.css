@@ -12,6 +12,8 @@
   width: 100%;
   height: auto;
   padding: 0;
+  position: sticky;
+  margin-top: 0px;
   background-color: #f8f9fa;
 }
 
@@ -47,13 +49,13 @@
 }
 
 .navbar ul li .active {
-  background-color: #003566;
+  background: linear-gradient(to left, #003566, #ffc300);
   color: #ffc300;
   box-shadow: 0px 0px 5px #ffc300;
   border-radius: 7px;
 }
 .navbar ul li .active img {
-  background-color: #003566;
+  background-color: transparent;
 }
 @media (max-width: 678px) {
   .navbar {
@@ -81,4 +83,70 @@
   .navbar ul.active {
     display: flex; 
   }
+}
+
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* background-color: #f2f2f2; */
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 0.3rem;
+}
+
+.welcome h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.welcome p {
+  font-size: 1.5rem;
+  color: #666;
+}
+
+
+
+.quote-container {
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px 2px rgba(245, 173, 4, 0.3);
+  max-width: 800px;
+  width: 90%;
+  margin-top: 1rem;
+}
+
+.quote {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.quote blockquote {
+  font-size: 2rem;
+  font-style: italic;
+  color: #003566;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.quote .quote-icon {
+  font-size: 2rem;
+  color: #ffc300;
+  margin: 0.2rem;
+}
+
+.quote cite {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #666;
+  margin-top: 0.5rem;
 }
