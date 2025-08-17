@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Components/Navbar';
 import Header from './Components/Header';
 import Profile from './Components/Profile';
-
+import About from './Components/About';
 //images
 import profilePic from "./assets/images/profile.jpg"; 
 function App() {
@@ -17,6 +17,7 @@ const profileInfo = {
       <Navbar />
       <Header  message={"Hey, Welcome to my Portfolio"}/>
       <Profile  name={profileInfo.name}  title={profileInfo.title} bio={profileInfo.bio} img={profilePic} />
+      <About />
     </>
   )
 }
