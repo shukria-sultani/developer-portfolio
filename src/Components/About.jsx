@@ -1,7 +1,5 @@
-// MyProfile.js
 import React from 'react';
 import AboutSection from './AboutSection';
-// import { FaUserGraduate, FaCode, FaDumbbell } from 'react-icons/fa'; 
 
 export default function MyProfile() {
   const experienceSummary = "I have about 2 years of experience in IT field, including teaching computer programs and frontend development.";

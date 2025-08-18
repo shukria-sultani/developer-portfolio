@@ -26,7 +26,7 @@ export default function AboutSection({ title, summary, list }) {
         </ul>
       )}
 
-      {/* Render the toggle button for this card */}
+  
       {list && list.length > 0 && (
         <ToggleButton onClick={handleToggleList} text={buttonText} />
       )}
