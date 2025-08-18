@@ -650,3 +650,123 @@ nav{
     display: none; 
   }
 }
+
+/*Footer*/
+
+.main-footer {
+  background: linear-gradient(to right, #e6b300, #001f3f);
+  color: #e9ecef;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 80px;
+  border-top: 5px solid #ffc300;
+  
+}
+
+.footer-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links {
+  display: flex;
+   background-color: transparent;
+  gap: 35px;
+  margin-bottom: 30px;
+}
+
+.social-icon-link {
+  color: #ffc300;
+  font-size: 2.2rem;
+  transition: color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+   background-color: transparent;
+}
+
+.social-icon-link:hover {
+  color: #ffffff;
+  transform: translateY(-8px) scale(1.1);
+  text-shadow: 0 0 15px #ffc300, 0 0 25px rgba(255, 195, 0, 0.6);
+  background-color: rgba(255, 195, 0, 0.2);
+}
+
+.social-icon-link:active {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.social-icon {
+  background-color: transparent;
+}
+
+.footer-info {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ced4da;
+   background-color: transparent;
+}
+
+.copyright {
+  margin-bottom: 8px;
+  font-weight: 500;
+     background-color: transparent;
+}
+
+.attribution {
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.9;
+     background-color: transparent;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 768px) {
+  .main-footer {
+    padding: 30px 15px;
+    margin-top: 50px;
+  }
+
+  .social-links {
+    gap: 25px;
+    margin-bottom: 25px;
+  }
+
+  .social-icon-link {
+    font-size: 1.8rem;
+    width: 45px;
+    height: 45px;
+  }
+
+  .footer-info {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-links {
+    gap: 20px;
+  }
+
+  .social-icon-link {
+    font-size: 1.6rem;
+    width: 40px;
+    height: 40px;
+  }
+
+  .footer-info {
+    font-size: 0.85rem;
+  }
+}

@@ -4,8 +4,10 @@ import Header from './Components/Header';
 import Profile from './Components/Profile';
 import About from './Components/About';
 import Projects from './Components/Projects';
+import Footer from './Components/Footer';
 //images
 import profilePic from "./assets/images/profile.jpg"; 
+
 function App() {
 
 const profileInfo = {
@@ -20,6 +22,7 @@ const profileInfo = {
       <Profile  name={profileInfo.name}  title={profileInfo.title} bio={profileInfo.bio} img={profilePic} />
       <About />
       <Projects />
+      <Footer />
     </>
   )
 }
