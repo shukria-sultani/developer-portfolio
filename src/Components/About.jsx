@@ -9,7 +9,7 @@ export default function MyProfile() {
   const skillsList = ["JavaScript", "React", "HTML", "CSS", "Boostrap", "Python", "Java"];
   const funFactsList = ["I like watching documentaries", "I love walking in the nature", "I am interested in photography"];
   const experienceList = ["Worked as a computer teacher at New Horizon, Bamyan Center |May 2023 - August 2024|", "Completed an internship in web developement at Webstack Academy, Remote |July 2024 - September 2024|"]
-
+  
   return (
     <>
      <div className="about-section">

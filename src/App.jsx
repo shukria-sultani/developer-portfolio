@@ -7,7 +7,7 @@ import Projects from './Components/Projects';
 import Footer from './Components/Footer';
 //images
 import profilePic from "./assets/images/profile.jpg"; 
-import ThemeToggle from './Components/ThemeToggle';
+import ContactForm from './Components/ContactFrom';
 
 function App() {
 
@@ -23,6 +23,7 @@ const profileInfo = {
       <Profile  name={profileInfo.name}  title={profileInfo.title} bio={profileInfo.bio} img={profilePic} />
       <About />
       <Projects />
+      <ContactForm  />
       <Footer />
     </>
   )
