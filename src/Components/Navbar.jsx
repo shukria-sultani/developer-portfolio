@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import ThemeToggle from "./ThemeToggle";
 // Navbar icons
 import homeIcon from "../assets/images/home.png"; 
 import aboutIcon from "../assets/images/about.png";
@@ -65,6 +65,8 @@ export default function Navbar() {
               <img src={contactIcon} alt="Contact Icon" width="30px" height="30px" /> Contact
             </a>
           </li>
+                <ThemeToggle />
+          
         </ul>
       </div>
     </nav>

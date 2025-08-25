@@ -7,6 +7,7 @@ import Projects from './Components/Projects';
 import Footer from './Components/Footer';
 //images
 import profilePic from "./assets/images/profile.jpg"; 
+import ThemeToggle from './Components/ThemeToggle';
 
 function App() {
 
