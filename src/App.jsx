@@ -8,6 +8,7 @@ import Footer from './Components/Footer';
 //images
 import profilePic from "./assets/images/profile.jpg"; 
 import ContactForm from './Components/ContactFrom';
+import FeedbackWall from './Components/FeebackWall';
 
 function App() {
 
@@ -24,6 +25,7 @@ const profileInfo = {
       <About />
       <Projects />
       <ContactForm  />
+      <FeedbackWall />
       <Footer />
     </>
   )

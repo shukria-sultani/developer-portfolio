@@ -1176,3 +1176,123 @@ nav {
   font-weight: bold;
   transition: all 0.3s ease;
 }
+
+/* Feedback Wall */
+.feedback-wall {
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 20px;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--card-shadow);
+}
+
+.feedback-wall h2 {
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.feedback-form input,
+.feedback-form select,
+.feedback-form textarea {
+  padding: 12px;
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  font-size: 1rem;
+}
+
+.feedback-form input:focus,
+.feedback-form select:focus,
+.feedback-form textarea:focus {
+  border-color: var(--secondary-color);
+}
+
+.feedback-form textarea {
+  resize: none;
+  min-height: 80px;
+}
+
+.feedback-form button {
+  padding: 12px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  max-width: 200px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  align-self: center;
+}
+
+.feedback-form button:hover {
+  background-color: var(--primary-color);
+  color: #ffff;
+}
+
+.sort-options {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.sort-options button {
+  margin: 0 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--card-background);
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.sort-options button:hover {
+  background-color: var(--secondary-color);
+  color: var(--card-background);
+}
+
+.feedback-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feedback-card {
+  background-color: var(--card-background);
+  box-shadow: 0 4px 15px var(--card-shadow);
+  border-radius: 12px;
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+  position: relative;
+}
+
+.feedback-card.featured {
+  border: 2px solid var(--secondary-color);
+}
+
+.featured-badge {
+  color: var(--secondary-color);
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
