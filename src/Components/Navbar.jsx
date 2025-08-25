@@ -40,7 +40,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="#about" 
               className={activeLink === "about" ? "active" : ""} 
               onClick={() => handleLinkClick("about")}
             >
@@ -49,7 +49,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="#projects" 
               className={activeLink === "projects" ? "active" : ""} 
               onClick={() => handleLinkClick("projects")}
             >
@@ -58,7 +58,7 @@ export default function Navbar() {
           </li>
           <li>
             <a 
-              href="#" 
+              href="#contact" 
               className={activeLink === "contact" ? "active" : ""} 
               onClick={() => handleLinkClick("contact")}
             >

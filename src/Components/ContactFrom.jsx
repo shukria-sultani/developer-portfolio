@@ -71,7 +71,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="contact-form-section">
+    <section className="contact-form-section" id="contact">
       <div className="contact-container">
         <h2>Get in Touch</h2>
         <div className="form-preview-wrapper">
