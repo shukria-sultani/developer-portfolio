@@ -2,10 +2,8 @@ import React, { useState } from 'react';
 import ToggleButton from './ToggleButton';
 
 export default function AboutSection({ title, summary, list }) {
-  // Each card has its own independent state for its list visibility
   const [isListVisible, setIsListVisible] = useState(false);
-
-  // The function to toggle the state for this specific card
+  
   const handleToggleList = () => {
     setIsListVisible(!isListVisible);
   };
@@ -17,16 +15,32 @@ export default function AboutSection({ title, summary, list }) {
       <h3>{title}</h3>
       <p className="card-summary">{summary}</p>
       
-      {/* Conditionally render the list only when isListVisible is true */}
       {isListVisible && list && list.length > 0 && (
         <ul className="card-list">
           {list.map((item, index) => (
-            <li key={index}>{item}</li>
+            <li key={index} className="skill-item">
+              {/* Check if the item is a skill object with a 'level' property */}
+              {typeof item === 'object' && item.level !== undefined ? (
+                <div className="skill-wrapper">
+                  <span>{item.name}</span>
+                  <div className="progress-bar">
+                    <div className="progress" style={{ width: `${item.level}%` }}>
+                      <span className="level-text">{item.level}%</span>
+                    </div>
+                  </div>
+                  <div className="fun-fact">{item.funFact}</div>
+                </div>
+              ) : (
+                // If not a skill object, render the item as a simple string
+                <div className="list-item-wrapper">
+                  <span>{item}</span>
+                </div>
+              )}
+            </li>
           ))}
         </ul>
       )}
 
-  
       {list && list.length > 0 && (
         <ToggleButton onClick={handleToggleList} text={buttonText} />
       )}
