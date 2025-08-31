@@ -1,73 +1,89 @@
 import React, { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
+
 // Navbar icons
-import homeIcon from "../assets/images/home.png"; 
+import homeIcon from "../assets/images/home.png";
 import aboutIcon from "../assets/images/about.png";
 import projectsIcon from "../assets/images/project.png";
 import contactIcon from "../assets/images/contact.png";
-import menuIcon from "../assets/images/menu.png"; 
+import menuIcon from "../assets/images/menu.png";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("home"); 
+  const [activeLink, setActiveLink] = useState("home");
+
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prev) => !prev);
   };
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   };
 
   return (
     <nav>
       <div className="navbar responsive-navbar">
-        <img 
-          src={menuIcon} 
-          className="menu-icon" 
-          alt="Menu Icon" 
-          onClick={toggleMenu} 
-        />
-        <ul className={isMenuOpen ? "active" : ""}>
+        <button
+          type="button"
+          className="menu-icon"
+          aria-label="Toggle menu"
+          onClick={toggleMenu}
+        >
+          <img src={menuIcon} alt="Menu" width="30" height="30" />
+        </button>
+
+        <ul className={isMenuOpen ? "menu-list active" : "menu-list"}>
           <li>
-            <a 
-              href="#" 
-              className={activeLink === "home" ? "active" : ""} 
+            <NavLink
+              to="/"
+              className={activeLink === "home" ? "active" : ""}
               onClick={() => handleLinkClick("home")}
             >
-              <img src={homeIcon} alt="Home Icon" width="30px" height="30px" /> Home
-            </a>
+              <img src={homeIcon} alt="Home Icon" width="30" height="30" /> Home
+            </NavLink>
           </li>
+
           <li>
-            <a 
-              href="#about" 
-              className={activeLink === "about" ? "active" : ""} 
+            <NavLink
+              to="/about"
+              className={activeLink === "about" ? "active" : ""}
               onClick={() => handleLinkClick("about")}
             >
-              <img src={aboutIcon} alt="About Icon" width="30px" height="30px" /> About
-            </a>
+              <img src={aboutIcon} alt="About Icon" width="30" height="30" /> About
+            </NavLink>
           </li>
+
           <li>
-            <a 
-              href="#projects" 
-              className={activeLink === "projects" ? "active" : ""} 
+            <NavLink
+              to="/projects"
+              className={activeLink === "projects" ? "active" : ""}
               onClick={() => handleLinkClick("projects")}
             >
-              <img src={projectsIcon} alt="Project Icon" width="30px" height="30px" /> Projects
-            </a>
+              <img src={projectsIcon} alt="Projects Icon" width="30" height="30" /> Projects
+            </NavLink>
           </li>
+
           <li>
-            <a 
-              href="#contact" 
-              className={activeLink === "contact" ? "active" : ""} 
+            <NavLink
+              to="/contact"
+              className={activeLink === "contact" ? "active" : ""}
               onClick={() => handleLinkClick("contact")}
             >
-              <img src={contactIcon} alt="Contact Icon" width="30px" height="30px" /> Contact
-            </a>
+              <img src={contactIcon} alt="Contact Icon" width="30" height="30" /> Contact
+            </NavLink>
           </li>
-                <ThemeToggle />
-          
+
+          {/* If you want ThemeToggle inside the menu, uncomment the line below.
+              Otherwise, place it outside the <ul> to appear separately. */}
+          {/* <li className="theme-toggle-item"><ThemeToggle /></li> */}
         </ul>
+
+        {/* If you want ThemeToggle always visible on the header, place it here: */}
+        <div className="theme-toggle-wrapper" aria-label="Toggle theme">
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );
