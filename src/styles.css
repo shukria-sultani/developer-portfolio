@@ -356,11 +356,11 @@ nav {
 }
 
 .about-card {
-  background: linear-gradient(to bottom right, var(--primary-color), var(--secondary-color));
+  background: --primary-color;
   color: black;
   padding: 30px 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 15px var(--card-shadow);
+  box-shadow: 0 2px 7px var(--secondary-color);
   width: 100%;
   max-width: 300px;
   text-align: center;
