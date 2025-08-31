@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faChevronLeft,
-  faChevronRight,
-  faStar,
   faInfoCircle,
   faTimesCircle,
   faExclamationCircle,
@@ -77,13 +74,9 @@ export default function Projects() {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const projectsPerPage = 2;
-
-  // New states for updates and filters
-  const [projectUpdates, setProjectUpdates] = useState([]);
   const [activeFilter, setActiveFilter] = useState("All");
-  const [expandedCard, setExpandedCard] = useState(null);
+  const [projectUpdates, setProjectUpdates] = useState([]);
+  const [expandedCard, setExpandedCard] = useState(null); // Declare expandedCard state
 
   // Function to get unique tech stacks for filter buttons
   const getUniqueTechStacks = () => {
@@ -95,17 +88,6 @@ export default function Projects() {
   const filteredProjects = projects.filter((project) =>
     activeFilter === "All" ? true : project.techStack.includes(activeFilter)
   );
-
-  // Auto-slideshow functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + projectsPerPage) % filteredProjects.length
-      );
-    }, 5000); // Change projects every 5 seconds
-
-    return () => clearInterval(interval); // Clean up the interval on component unmount
-  }, [filteredProjects.length]);
 
   // Project Updates Polling
   useEffect(() => {
@@ -134,39 +116,9 @@ export default function Projects() {
     return () => clearInterval(interval);
   }, []);
 
-  const handleNext = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex + projectsPerPage) % filteredProjects.length
-    );
-  };
-
-  const handlePrevious = () => {
-    setCurrentIndex(
-      (prevIndex) =>
-        (prevIndex - projectsPerPage + filteredProjects.length) %
-        filteredProjects.length
-    );
-  };
-
   const toggleDetails = (name) => {
     setExpandedCard(expandedCard === name ? null : name);
   };
-
-  const visibleProjects = filteredProjects.slice(
-    currentIndex,
-    currentIndex + projectsPerPage
-  );
-  
-  const projectsToDisplay =
-    visibleProjects.length < projectsPerPage && filteredProjects.length > 0
-      ? [
-          ...visibleProjects,
-          ...filteredProjects.slice(
-            0,
-            projectsPerPage - visibleProjects.length
-          ),
-        ]
-      : visibleProjects;
 
   return (
     <section className="projects-section" id="projects">
@@ -204,101 +156,82 @@ export default function Projects() {
           </AnimatePresence>
         </div>
 
-        <div className="project-grid-wrapper">
-          <button onClick={handlePrevious} className="slide-button prev-button">
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </button>
-          
-          <AnimatePresence mode="wait">
-            <motion.div 
-              className="project-grid"
-              key={currentIndex}
-              initial={{ opacity: 0, x: 200 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -200 }}
-              transition={{ duration: 0.5 }}
+        <div className="project-grid">
+          {filteredProjects.map((project) => (
+            <div
+              className={`project-card ${
+                expandedCard === project.name ? "expanded" : ""
+              }`}
+              key={project.name}
+              onClick={() => toggleDetails(project.name)}
             >
-              {projectsToDisplay.map((project) => (
-                <div
-                  className={`project-card ${
-                    expandedCard === project.name ? "expanded" : ""
-                  }`}
-                  key={project.name}
-                  onClick={() => toggleDetails(project.name)}
-                >
-                  <div className="project-image-container">
-                    <img
-                      src={project.imageDesktop}
-                      alt={`${project.name} on desktop`}
-                      className="desktop-img"
-                    />
-                  </div>
-                  <div className="project-content">
-                    <h3 className="project-name">{project.name}</h3>
-                    
-                    {/* Priority & Featured Badges */}
-                    <div className="project-badges">
-                      {project.featured && (
-                        <motion.span 
-                          className="featured-badge"
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          🌟 Featured
-                        </motion.span>
-                      )}
-                      {project.priority === 'high' && (
-                        <motion.span 
-                          className="priority-badge high-priority"
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                          <FontAwesomeIcon icon={faExclamationCircle} /> High Priority
-                        </motion.span>
-                      )}
-                    </div>
-
-                    {/* Conditional Rendering for Details */}
-                    {expandedCard === project.name ? (
-                      <div className="expanded-details">
-                        <p className="project-description">
-                          {project.description}
-                        </p>
-                        <div className="tech-stack">
-                          {project.techStack.map((tech, i) => (
-                            <span key={i} className="tech-item">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                        <div className="project-links">
-                          <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="live-demo-btn">
-                            Live Demo
-                          </a>
-                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="github-btn">
-                            GitHub
-                          </a>
-                        </div>
-                      </div>
-                    ) : (
-                      <p className="project-description-short">
-                        {project.description}
-                      </p>
-                    )}
-                    
-                    {/* Toggle Button */}
-                    <button className="details-toggle-btn" onClick={(e) => { e.stopPropagation(); toggleDetails(project.name); }}>
-                      <FontAwesomeIcon icon={expandedCard === project.name ? faTimesCircle : faInfoCircle} />
-                    </button>
-                  </div>
+              <div className="project-image-container">
+                <img
+                  src={project.imageDesktop}
+                  alt={`${project.name} on desktop`}
+                  className="desktop-img"
+                />
+              </div>
+              <div className="project-content">
+                <h3 className="project-name">{project.name}</h3>
+                
+                {/* Priority & Featured Badges */}
+                <div className="project-badges">
+                  {project.featured && (
+                    <motion.span 
+                      className="featured-badge"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      🌟 Featured
+                    </motion.span>
+                  )}
+                  {project.priority === 'high' && (
+                    <motion.span 
+                      className="priority-badge high-priority"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                      <FontAwesomeIcon icon={faExclamationCircle} /> High Priority
+                    </motion.span>
+                  )}
                 </div>
-              ))}
-            </motion.div>
-          </AnimatePresence>
-          
-          <button onClick={handleNext} className="slide-button next-button">
-            <FontAwesomeIcon icon={faChevronRight} />
-          </button>
+
+                {/* Conditional Rendering for Details */}
+                {expandedCard === project.name ? (
+                  <div className="expanded-details">
+                    <p className="project-description">
+                      {project.description}
+                    </p>
+                    <div className="tech-stack">
+                      {project.techStack.map((tech, i) => (
+                        <span key={i} className="tech-item">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-links">
+                      <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="live-demo-btn">
+                        Live Demo
+                      </a>
+                      <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="github-btn">
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="project-description-short">
+                    {project.description}
+                  </p>
+                )}
+                
+                {/* Toggle Button */}
+                <button className="details-toggle-btn" onClick={(e) => { e.stopPropagation(); toggleDetails(project.name); }}>
+                  <FontAwesomeIcon icon={expandedCard === project.name ? faTimesCircle : faInfoCircle} />
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
