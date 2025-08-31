@@ -1354,3 +1354,19 @@ nav {
   font-size:4rem;
   font-weight: 900;
 }
+
+.back-to-home{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 10px;
+  font-size: medium;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+
+.back-to-home:hover:not(:disabled) {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}

@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import profilePic from "./assets/images/profile.jpg"; 
 import ContactForm from './Components/ContactFrom';
 import FeedbackWall from './Components/FeebackWall';
+import NotFound from './Components/NotFound';
 
 function HomePage() {
   const profileInfo = {
@@ -33,12 +34,10 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
-      <Navbar /> {/* Persistent across all pages */}
+      <Navbar /> 
       <Routes>
-        {/* Home route renders a composed home page with sections */}
+   
         <Route path="/" element={<HomePage />} />
-        
-        {/* Individual routes for other standalone pages */}
         <Route path="/header" element={<Header message={"Hey, Welcome to my Portfolio"} />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<About />} />
@@ -46,10 +45,10 @@ function App() {
         <Route path="/contact" element={<ContactForm />} />
         <Route path="/feedback" element={<FeedbackWall />} />
 
-        {/* Optional: redirect unknown routes to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+ 
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer /> {/* Persistent footer on all pages */}
+      <Footer /> 
     </BrowserRouter>
   );
 }
