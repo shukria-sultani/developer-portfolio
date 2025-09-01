@@ -1,42 +1,10 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faQuoteLeft, faQuoteRight } from '@fortawesome/free-solid-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-export default function Header({message}) {
-  const quotes = [
-    {
-      text: "Coding is like poetry should be short and concise.",
-      author: "Santosh Kalwar"
-    },
-    {
-      text: "It's not a bug; it's an undocumented feature.",
-      author: "Anonymous"
-    },
-    {
-      text: "First, solve the problem. Then, write the code.",
-      author: "John Johnson"
-    },
-    {
-      text: "Code is like humor. When you have to explain it, it's bad.",
-      author: "Cory House"
-    },
-    {
-      text: "Make it work, make it right, make it fast.",
-      author: "Kent Beck"
-    },
-    {
-      text: "Clean code always looks like it was written by someone who cares.",
-      author: "Robert C. Martin"
-    },
-    {
-      text: "Of course, bad code can be cleaned up. But it's very expensive.",
-      author: "Robert C. Martin"
-    }
-  ];
-
-  // Generate a random index
-  const randomIndex = Math.floor(Math.random() * quotes.length);
-  const randomQuote = quotes[randomIndex];
+export default function Header({ message }) {
+  const navigate = useNavigate();
 
   return (
     <div className="header-container">
@@ -44,15 +12,26 @@ export default function Header({message}) {
         <h1>Shukria Sultani</h1>
         <p>{message}</p>
       </div>
-      <div className="quote-container">
-        <div className="quote">
-          <FontAwesomeIcon icon={faQuoteLeft} className="quote-icon" />
-          <blockquote>
-            <p style={{backgroundColor:"#fff"}}>{randomQuote.text}</p>
-          </blockquote>
-          <FontAwesomeIcon icon={faQuoteRight} className="quote-icon" />
-          <cite>- {randomQuote.author}</cite>
+      <div className="hero-container" style={{display: "flex", flexDirection: "column"}}>
+        <div className="hero" style={{display: "flex", flexDirection: "column"}}>
+          <h1 className="ican" style={{fontSize: "3.3rem", alignSelf: "center"}}>I can:</h1>
+          <h2>
+            C <span>Create (Web Applications)</span>
+          </h2>
+          <h2>
+            O <span>Optimize (Performance)</span>
+          </h2>
+          <h2>
+            D <span>Design (User Interface)</span>
+          </h2>
+          <h2>
+            E <span>Enhance (User Experience)</span>
+          </h2>
         </div>
+
+        <button className="cta" onClick={() => navigate("/projects")} style={{alignSelf: "center"}}>
+          View Projects
+        </button>
       </div>
     </div>
   );

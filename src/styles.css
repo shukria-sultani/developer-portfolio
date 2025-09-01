@@ -410,7 +410,7 @@ nav {
   border-bottom: none;
 }
 
-.toggle-button {
+.hero-container button, .toggle-button {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-size: 1rem;
@@ -424,7 +424,7 @@ nav {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.toggle-button:hover {
+ .toggle-button:hover {
   background-color: var(--secondary-color);
   transform: translateY(-2px);
 }
@@ -1369,4 +1369,18 @@ nav {
 .back-to-home:hover:not(:disabled) {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+}
+.ican{
+   color: var(--secondary-color);
+   line-height: 0px;
+}
+.hero h2{
+  color: var(--secondary-color);
+  font-size: 2rem;
+  line-height: 0px;
+}
+
+.hero h2 span{
+  color: var(--primary-color);
+  font-size: 1.4rem;
 }
