@@ -5,11 +5,12 @@ import Profile from './Components/Profile';
 import About from './Components/About';
 import Projects from './Components/Projects';
 import Footer from './Components/Footer';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useParams } from 'react-router-dom';
 import profilePic from "./assets/images/profile.jpg"; 
 import ContactForm from './Components/ContactFrom';
 import FeedbackWall from './Components/FeebackWall';
 import NotFound from './Components/NotFound';
+import ProjectDetails from './Components/ProjectDetails';
 
 function HomePage() {
   const profileInfo = {
@@ -32,6 +33,7 @@ function HomePage() {
 }
 
 function App() {
+  const id = useParams()
   return (
     <BrowserRouter>
       <Navbar /> 
@@ -40,6 +42,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/header" element={<Header message={"Hey, Welcome to my Portfolio"} />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={< ProjectDetails/>} />
         <Route path="/about" element={<About />} />
         <Route path="/profile" element={<Profile name="Shukria Sultani" title="Frontend Developer" bio="..." img={profilePic} />} />
         <Route path="/contact" element={<ContactForm />} />

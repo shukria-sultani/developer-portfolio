@@ -6,78 +6,21 @@ import {
   faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
+import { projects } from "./data/projects";
 
-// images
-import weatherDesktop from "../assets/images/Macbook-Air-all-around-weather.png";
-import sayyidanisaDesktop from "../assets/images/Macbook-Air-sayyida-nisa.png";
-import kalamealiDesktop from "../assets/images/Macbook-Air-kalam-e-ali.png";
-import innovatershouseDesktop from "../assets/images/Macbook-Air-innovatershouse.png";
-import invoiceDesktop from "../assets/images/Macbook-Air-invoice.png";
+import { useNavigate, useParams } from "react-router-dom";
+import TechStack from "./TechStack";
 
 export default function Projects() {
-  const projects = [
-    {
-      name: "Weather All Around",
-      imageDesktop: weatherDesktop,
-      description:
-        "A user friendly weather application providing current weather and 5 days forecast.",
-      liveLink: "https://all-around-weather.netlify.app/",
-      githubLink: "https://github.com/shukria-sultani/SheCodes-Final_Project",
-      techStack: ["HTML", "CSS", "JavaScript", "API"],
-      featured: false,
-      status: 'Completed',
-    },
-    {
-      name: "Sayyida-Nisa",
-      imageDesktop: sayyidanisaDesktop,
-      description:
-        "Sayyida Nisa is a website dedicated to discussing the life and impact of Fatima Zahra (SA) in Islam and the lives of Muslims. It covers her life, teachings, hadiths, and provides useful resources to learn more about Lady Fatima (SA).",
-      liveLink: "https://sayyida-nisa.netlify.app/",
-      githubLink: "httpss://github.com/shukria-sultani/Sayyida-Nisa",
-      techStack: ["React", "JavaScript", "Bootstrap", "CSS", "HTML"],
-      featured: true,
-      status: 'Completed',
-    },
-    {
-      name: "Kalam-e-Ali",
-      imageDesktop: kalamealiDesktop,
-      description:
-        "A user friendly web app for studying the best sayings of Imam Ali (SA) from Nahjul Balagha.",
-      liveLink: "https://kalam-e-ali.netlify.app/",
-      githubLink: "https://github.com/shukria-sultani/Imam-Ali-Sayings",
-      techStack: ["React", "JavaScript", "Bootstrap", "CSS", "HTML"],
-      featured: true,
-      status: 'In Progress',
-    },
-    {
-      name: "InnovatersHouse",
-      imageDesktop: innovatershouseDesktop,
-      description:
-        "An intuitive school portal designed to help students manage their profiles, and access resources.",
-      liveLink: "https://shukria-sultani.github.io/InnovatersHouse/index.html",
-      githubLink: "https://github.com/shukria-sultani/InnovatersHouse",
-      techStack: ["HTML", "CSS", "JavaScript"],
-      featured: false,
-      status: 'In Progress',
-    },
-    {
-      name: "Client and Invoice Management",
-      imageDesktop: invoiceDesktop,
-      description:
-        "A comprehensive client and invoice management system for businesses and freelancers to track clients, manage invoices, and see the summary in the dashboard.",
-      liveLink:
-        "https://shukria-sultani.github.io/freelance-invoice-app/index.html",
-      githubLink: "https://github.com/shukria-sultani/freelance-invoice-app",
-      techStack: ["HTML", "CSS", "JavaScript", "Chart.js"],
-      featured: true,
-      status: 'Completed',
-    },
-  ];
+  const navigate = useNavigate();
+  const handleProjectClick = (id) => {
+  navigate(`/projects/${id}`); // Navigate to the project detail page using the ID
+};
 
+  
   const [activeFilter, setActiveFilter] = useState("All");
   const [projectUpdates, setProjectUpdates] = useState([]);
-  const [expandedCard, setExpandedCard] = useState(null); // Declare expandedCard state
-
+  const [expandedCard, setExpandedCard] = useState(null); 
   // Function to get unique tech stacks for filter buttons
   const getUniqueTechStacks = () => {
     const allStacks = projects.flatMap((p) => p.techStack);
@@ -156,14 +99,14 @@ export default function Projects() {
           </AnimatePresence>
         </div>
 
-        <div className="project-grid">
+        <div className="project-grid" >
           {filteredProjects.map((project) => (
             <div
               className={`project-card ${
                 expandedCard === project.name ? "expanded" : ""
               }`}
-              key={project.name}
-              onClick={() => toggleDetails(project.name)}
+                key={project.id} 
+              onClick={() => handleProjectClick(project.id)} 
             >
               <div className="project-image-container">
                 <img
@@ -202,13 +145,7 @@ export default function Projects() {
                     <p className="project-description">
                       {project.description}
                     </p>
-                    <div className="tech-stack">
-                      {project.techStack.map((tech, i) => (
-                        <span key={i} className="tech-item">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                     <TechStack techList={project.techStack} />
                     <div className="project-links">
                       <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="live-demo-btn">
                         Live Demo
