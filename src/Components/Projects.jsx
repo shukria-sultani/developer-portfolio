@@ -25,7 +25,7 @@ export default function Projects() {
       githubLink: "https://github.com/shukria-sultani/SheCodes-Final_Project",
       techStack: ["HTML", "CSS", "JavaScript", "API"],
       featured: false,
-      priority: 'low',
+      status: 'Completed',
     },
     {
       name: "Sayyida-Nisa",
@@ -33,10 +33,10 @@ export default function Projects() {
       description:
         "Sayyida Nisa is a website dedicated to discussing the life and impact of Fatima Zahra (SA) in Islam and the lives of Muslims. It covers her life, teachings, hadiths, and provides useful resources to learn more about Lady Fatima (SA).",
       liveLink: "https://sayyida-nisa.netlify.app/",
-      githubLink: "https://github.com/shukria-sultani/Sayyida-Nisa",
+      githubLink: "httpss://github.com/shukria-sultani/Sayyida-Nisa",
       techStack: ["React", "JavaScript", "Bootstrap", "CSS", "HTML"],
       featured: true,
-      priority: 'high',
+      status: 'Completed',
     },
     {
       name: "Kalam-e-Ali",
@@ -47,7 +47,7 @@ export default function Projects() {
       githubLink: "https://github.com/shukria-sultani/Imam-Ali-Sayings",
       techStack: ["React", "JavaScript", "Bootstrap", "CSS", "HTML"],
       featured: true,
-      priority: 'high',
+      status: 'In Progress',
     },
     {
       name: "InnovatersHouse",
@@ -58,7 +58,7 @@ export default function Projects() {
       githubLink: "https://github.com/shukria-sultani/InnovatersHouse",
       techStack: ["HTML", "CSS", "JavaScript"],
       featured: false,
-      priority: 'medium',
+      status: 'In Progress',
     },
     {
       name: "Client and Invoice Management",
@@ -70,7 +70,7 @@ export default function Projects() {
       githubLink: "https://github.com/shukria-sultani/freelance-invoice-app",
       techStack: ["HTML", "CSS", "JavaScript", "Chart.js"],
       featured: true,
-      priority: 'high',
+      status: 'Completed',
     },
   ];
 
@@ -175,26 +175,25 @@ export default function Projects() {
               <div className="project-content">
                 <h3 className="project-name">{project.name}</h3>
                 
-                {/* Priority & Featured Badges */}
+                {/* Status & Featured Badges */}
                 <div className="project-badges">
                   {project.featured && (
                     <motion.span 
                       className="featured-badge"
                       animate={{ scale: [1, 1.1, 1] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    
                     >
                       🌟 Featured
                     </motion.span>
                   )}
-                  {project.priority === 'high' && (
-                    <motion.span 
-                      className="priority-badge high-priority"
-                      animate={{ scale: [1, 1.1, 1] }}
+                   <motion.span
+                    animate={{ scale: [1, 1.1, 1] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <FontAwesomeIcon icon={faExclamationCircle} /> High Priority
-                    </motion.span>
-                  )}
+                      className="status"
+                   >
+                     { project.status}
+                   </motion.span>
                 </div>
 
                 {/* Conditional Rendering for Details */}

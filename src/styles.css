@@ -922,9 +922,9 @@ nav {
   margin-bottom: 10px;
 }
 
-.featured-badge {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
+.status, .featured-badge {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 6px 12px;
   border-radius: 5px;
   font-weight: bold;
@@ -933,22 +933,6 @@ nav {
   white-space: nowrap;
 }
 
-.priority-badge {
-  padding: 6px 12px;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.high-priority {
-  background-color: #dc3545;
-  color: #fff;
-}
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
