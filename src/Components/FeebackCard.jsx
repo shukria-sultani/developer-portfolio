@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 
-
 const renderStars = (rating) => {
   const stars = [];
   for (let i = 0; i < 5; i++) {
-    // Add a filled star if the current index is less than the rating
     if (i < rating) {
       stars.push(<span key={i} className="star-icon filled">★</span>);
     } else {
-      // Add an empty star for the rest
       stars.push(<span key={i} className="star-icon empty">☆</span>);
     }
   }
   return stars;
 };
 
-const FeedbackWall = () => {
+const FeedbackCard = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [name, setName] = useState('');
   const [rating, setRating] = useState(1);
@@ -38,26 +35,34 @@ const FeedbackWall = () => {
     return b.id - a.id; // Newest first
   });
 
-
   return (
     <div className="feedback-wall">
       <h2>Visitor Feedback</h2>
       <form onSubmit={handleSubmit} className="feedback-form">
+        <label htmlFor="name-input" className="visually-hidden">Your Name</label>
         <input
+          id="name-input"
           type="text"
           placeholder="Your Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
-        <select value={rating} onChange={(e) => setRating(e.target.value)}>
+        <label htmlFor="rating-select" className="visually-hidden">Rating</label>
+        <select
+          id="rating-select"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+        >
           {[1, 2, 3, 4, 5].map((star) => (
             <option key={star} value={star}>
               {renderStars(star)}
             </option>
           ))}
         </select>
+        <label htmlFor="comment-textarea" className="visually-hidden">Your Comment</label>
         <textarea
+          id="comment-textarea"
           placeholder="Your Comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
@@ -67,8 +72,8 @@ const FeedbackWall = () => {
       </form>
 
       <div className="sort-options">
-        <button onClick={() => setSortOption('newest')}>Newest First</button>
-        <button onClick={() => setSortOption('highest')}>Highest Rating First</button>
+        <button onClick={() => setSortOption('newest')} className={sortOption === 'newest' ? 'active' : ''}>Newest First</button>
+        <button onClick={() => setSortOption('highest')} className={sortOption === 'highest' ? 'active' : ''}>Highest Rating First</button>
       </div>
 
       <div className="feedback-cards">
@@ -84,4 +89,4 @@ const FeedbackWall = () => {
   );
 };
 
-export default FeedbackWall;
+export default FeedbackCard;

@@ -1,9 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import { projects } from "./data/projects"; 
+import { useParams, Link } from 'react-router-dom';
+import { projects } from "./data/projects";
 import TechStack from './TechStack';
-import { Link } from 'react-router-dom';
-
+import FeedbackCard from './FeebackCard';
 function ProjectDetails() {
   const { id } = useParams();
   const project = projects.find(p => p.id === parseInt(id));
@@ -16,10 +15,10 @@ function ProjectDetails() {
     <div className="project-details-page">
       <div className="project-details-container">
         <h2 className="project-name">{project.name}</h2>
-        <img 
-          src={project.imageDesktop} 
-          alt={`${project.name} preview`} 
-          className="project-details-image" 
+        <img
+          src={project.imageDesktop}
+          alt={`${project.name} preview`}
+          className="project-details-image"
         />
         <div className="project-details-content">
           <p>{project.description}</p>
@@ -35,7 +34,12 @@ function ProjectDetails() {
             GitHub Repo
           </a>
         </div>
-        <Link to="/projects" className="back-to-home">Back to Projects</Link>
+        
+        
+     
+        <FeedbackCard projectId={project.id} />
+                <Link to="/projects" className="back-to-home">Back to Projects</Link>
+
       </div>
     </div>
   );
