@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 
 
+const renderStars = (rating) => {
+  const stars = [];
+  for (let i = 0; i < 5; i++) {
+    // Add a filled star if the current index is less than the rating
+    if (i < rating) {
+      stars.push(<span key={i} className="star-icon filled">★</span>);
+    } else {
+      // Add an empty star for the rest
+      stars.push(<span key={i} className="star-icon empty">☆</span>);
+    }
+  }
+  return stars;
+};
+
 const FeedbackWall = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [name, setName] = useState('');
@@ -24,6 +38,7 @@ const FeedbackWall = () => {
     return b.id - a.id; // Newest first
   });
 
+
   return (
     <div className="feedback-wall">
       <h2>Visitor Feedback</h2>
@@ -37,7 +52,9 @@ const FeedbackWall = () => {
         />
         <select value={rating} onChange={(e) => setRating(e.target.value)}>
           {[1, 2, 3, 4, 5].map((star) => (
-            <option key={star} value={star}>{star} Star{star > 1 ? 's' : ''}</option>
+            <option key={star} value={star}>
+              {renderStars(star)}
+            </option>
           ))}
         </select>
         <textarea
@@ -58,7 +75,7 @@ const FeedbackWall = () => {
         {sortedFeedbacks.map((feedback) => (
           <div key={feedback.id} className={`feedback-card ${feedback.rating === 5 ? 'featured' : ''}`}>
             <h3>{feedback.name} {feedback.rating === 5 && <span className="featured-badge">🌟 Featured</span>}</h3>
-            <p className="rating">Rating: {feedback.rating} Stars</p>
+            <p className="rating">{renderStars(feedback.rating)}</p>
             <p>{feedback.comment}</p>
           </div>
         ))}
