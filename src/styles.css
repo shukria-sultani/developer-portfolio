@@ -144,6 +144,8 @@ nav {
 .welcome {
   text-align: center;
   margin-bottom: 0.3rem;
+  display: flex;
+  
 }
 
 .welcome h1 {
@@ -152,54 +154,6 @@ nav {
   color: var(--primary-color);
   line-height: 10px;
 }
-
-.welcome p {
-  font-size: 1.5rem;
-  color: var(--text-color);
-}
-
-.quote-container {
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 700px;
-  width: 90%;
-  margin-top: 1rem;
-  background-color: var(--card-background);
-  border-right: 4px solid var(--secondary-color);
-  border-left: 4px solid var(--secondary-color);
-}
-
-.quote {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: transparent;
-}
-
-.quote blockquote {
-  font-size: 1.8rem;
-  font-style: italic;
-  color: var(--primary-color);
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  background-color: transparent;
-}
-
-.quote .quote-icon {
-  font-size: 3rem;
-  color: var(--secondary-color);
-  margin: 0.2rem;
-}
-
-.quote cite {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-color);
-  margin-top: 0.5rem;
-}
-
 /* Profile */
 .profile-section {
   display: flex;
@@ -459,7 +413,6 @@ nav {
 
 /* Projects Section */
 .projects-section {
-  /* padding: 50px 20px; */
   background-color: var(--background-color);
   text-align: center;
   display: flex;
@@ -1486,4 +1439,47 @@ nav {
 .star-icon.empty {
   color: lightgray;
 }
+/* Header animation */
 
+.I-am{
+  text-shadow: 0 0 7px rgba(255,255,255,.3), 0 0 3px rgba(255,255,255,.3);
+  font-size: 3.4rem;
+  font-weight: bolder;
+}
+.name-title {
+  height:50px;
+  overflow:hidden;
+  margin-left: 1rem;
+}
+
+.name-title > div > div {
+  padding: 0.25rem 0.75rem;
+  height:2.81rem;
+  margin-bottom: 2.81rem;
+  display:inline-block;
+}
+
+.name-title div:first-child {
+  animation: text-animation 8s infinite;
+}
+
+.first div {
+  background-color:#20a7d8;
+}
+.second div {
+  background-color:#CD921E;
+}
+
+
+@keyframes text-animation {
+  0% {margin-top: 0;}
+  10% {margin-top: 0;}
+  20% {margin-top: -5.62rem;}
+  30% {margin-top: -5.62rem;}
+  40% {margin-top: -11.24rem;}
+  60% {margin-top: -11.24rem;}
+  70% {margin-top: -5.62rem;}
+  80% {margin-top: -5.62rem;}
+  90% {margin-top: 0;}
+  100% {margin-top: 0;}
+}

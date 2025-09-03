@@ -3,14 +3,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuoteLeft, faQuoteRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-export default function Header({ message }) {
+export default function Header() {
   const navigate = useNavigate();
 
   return (
     <div className="header-container">
       <div className="welcome">
-        <h1>Shukria Sultani</h1>
-        <p>{message}</p>
+        <span className="I-am ">I am </span>
+        <div className="name-title">
+         <div class="first"><h1>Shukria Sultani</h1></div>
+    <div class="second"><h1>Frontend Developer</h1></div>
+    </div>
+  
       </div>
       <div className="hero-container" style={{display: "flex", flexDirection: "column"}}>
         <div className="hero" style={{display: "flex", flexDirection: "column"}}>

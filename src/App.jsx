@@ -50,7 +50,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route
           path="/header"
-          element={<Header message={"Hey, Welcome to my Portfolio"} />}
+          element={<Header  />}
         />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
