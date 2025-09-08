@@ -50,28 +50,55 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      setIsSubmitting(true);
-      
-      // Simulate API call
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setShowSuccessModal(true);
-        // Clear form and localStorage on successful submission
-        setName("");
-        setEmail("");
-        setMessage("");
-        localStorage.removeItem("contactName");
-        localStorage.removeItem("contactEmail");
-        localStorage.removeItem("contactMessage");
-        setUnsentHint(false);
-      }, 1000);
-    }
-  };
+  e.preventDefault();
+  if (validateForm()) {
+    setIsSubmitting(true);
+
+    // Get the data from your React state
+    const data = {
+      "form-name": "contact", 
+      name,
+      email,
+      message,
+    };
+
+    // Encode the data for a form submission
+    const encodedData = Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+
+    // Use fetch to send the data
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encodedData,
+    })
+    .then(() => {
+      setIsSubmitting(false);
+      setShowSuccessModal(true);
+      // Clear form fields on success
+      setName("");
+      setEmail("");
+      setMessage("");
+      localStorage.removeItem("contactName");
+      localStorage.removeItem("contactEmail");
+      localStorage.removeItem("contactMessage");
+    })
+    .catch((error) => {
+      setIsSubmitting(false);
+      alert("Submission failed. Please try again.");
+      console.error(error);
+    });
+  }
+};
 
   return (
     <section className="contact-form-section" id="contact">
+      <form name="contact" data-netlify="true" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="message"></textarea>
+</form>
       <div className="contact-container">
         <h2>Get in Touch</h2>
         <div className="form-preview-wrapper">
