@@ -23,7 +23,7 @@ function ProjectDetails() {
         <div className="project-details-content">
           <p>{project.description}</p>
         </div>
-        
+           
         <TechStack techList={project.techStack} />
 
         <div className="project-details-links">

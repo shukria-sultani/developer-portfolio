@@ -9,12 +9,12 @@ export default function Header() {
   return (
     <div className="header-container">
       <div className="welcome">
-        <span className="I-am ">I am </span>
-        <div className="name-title">
-         <div class="first"><h1>Shukria Sultani</h1></div>
-    <div class="second"><h1>Frontend Developer</h1></div>
-    </div>
-  
+  <div className="welcome-msg">
+    <h1 className="slide-in-left">Welcome! I am Shukria Sultani, a Frontend Developer</h1>
+    <h2 className="zoom-in">Let's build something amazing together!</h2>
+</div>
+
+
       </div>
       <div className="hero-container" style={{display: "flex", flexDirection: "column"}}>
         <div className="hero" style={{display: "flex", flexDirection: "column"}}>

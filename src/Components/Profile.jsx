@@ -16,7 +16,7 @@ export default function Profile({ name, title, bio, img }) {
         </div>
         </div>
         <div className="profile-info">
-          <p className="profile-bio">{bio}</p>
+          <p className="profile-bio" style={{lineHeight: "35px", textAlign:"left"}}>{bio}</p>
         </div>
       </div>
     </section>
