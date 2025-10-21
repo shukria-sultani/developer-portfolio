@@ -649,14 +649,10 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .project-grid-wrapper {
-    gap: 10px;
-    padding: 0 10px;
-    padding-top: 50px;
-  }
+
 
   .project-grid {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     max-width: 100%;
   }
 
