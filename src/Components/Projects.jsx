@@ -19,7 +19,6 @@ export default function Projects() {
 
   
   const [activeFilter, setActiveFilter] = useState("All");
-  const [projectUpdates, setProjectUpdates] = useState([]);
   const [expandedCard, setExpandedCard] = useState(null); 
   // Function to get unique tech stacks for filter buttons
   const getUniqueTechStacks = () => {
@@ -32,32 +31,7 @@ export default function Projects() {
     activeFilter === "All" ? true : project.techStack.includes(activeFilter)
   );
 
-  // Project Updates Polling
-  useEffect(() => {
-    const messages = [
-      "New project added: Weather All Around!",
-      "An update has been pushed to Sayyida-Nisa!",
-      "Kalam-e-Ali is now live!",
-      "Major performance updates for InnovatersHouse!",
-    ];
-    let messageIndex = 0;
-
-    const interval = setInterval(() => {
-      if (messageIndex < messages.length) {
-        setProjectUpdates((prevUpdates) => [
-          { id: Date.now(), text: messages[messageIndex] },
-          ...prevUpdates,
-        ]);
-        messageIndex++;
-      } else {
-        // Reset the updates
-        setProjectUpdates([]);
-        messageIndex = 0;
-      }
-    }, 15000);
-
-    return () => clearInterval(interval);
-  }, []);
+ 
 
   const toggleDetails = (name) => {
     setExpandedCard(expandedCard === name ? null : name);
@@ -81,24 +55,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Live Updates Ticker */}
-        <div className="updates-panel">
-          <AnimatePresence>
-            {projectUpdates.map((update) => (
-              <motion.div
-                key={update.id}
-                className="update-message"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                {update.text}
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
+       
         <div className="project-grid" >
           {filteredProjects.map((project) => (
             <div
