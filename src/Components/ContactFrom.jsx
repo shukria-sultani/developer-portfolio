@@ -80,11 +80,6 @@ const handleSubmit = async (e)=>{
 
   return (
     <section className="contact-form-section" id="contact">
-      <form name="contact" data-netlify="true" hidden>
-  <input type="text" name="name" />
-  <input type="email" name="email" />
-  <textarea name="message"></textarea>
-</form>
       <div className="contact-container">
         <h2>Get in Touch</h2>
         <div className="form-preview-wrapper">
