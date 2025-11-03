@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser, faComment } from "@fortawesome/free-solid-svg-icons";
 import LivePreview from "./LivePreview";
 import SuccessModal from "./SuccessModal";
+import emailjs from "@emailjs/browser"
+import { textPath } from "framer-motion/m";
 
 // Helper function for email validation
 const isEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -49,48 +51,32 @@ export default function ContactForm() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-  e.preventDefault();
-  if (validateForm()) {
-    setIsSubmitting(true);
 
-    // Get the data from your React state
-    const data = {
-      "form-name": "contact", 
-      name,
-      email,
-      message,
-    };
+const handleSubmit = async (e)=>{
+  e.preventDefault()
+     const serviceId = "service_g6hge3g"
+  const templateId = "template_lgyafb3"
+  const publicKey = "T8RQaGSnAUyZ0psqU"
 
-    // Encode the data for a form submission
-    const encodedData = Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-
-    // Use fetch to send the data
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encodedData,
-    })
-    .then(() => {
-      setIsSubmitting(false);
-      setShowSuccessModal(true);
-      // Clear form fields on success
-      setName("");
-      setEmail("");
-      setMessage("");
-      localStorage.removeItem("contactName");
-      localStorage.removeItem("contactEmail");
-      localStorage.removeItem("contactMessage");
-    })
-    .catch((error) => {
-      setIsSubmitting(false);
-      alert("Submission failed. Please try again.");
-      console.error(error);
-    });
+  const templateParams = {
+    user_name: name,
+    user_email: email,
+    recipient: "Shukria Sultani",
+    user_message: message
   }
-};
+  try{
+        const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+        if(response){
+          setShowSuccessModal(true)
+        }
+        setName("")
+        setEmail("")
+        setMessage("")
+  }catch(error){
+    console.log(error)
+  }
+}
+    
 
   return (
     <section className="contact-form-section" id="contact">
