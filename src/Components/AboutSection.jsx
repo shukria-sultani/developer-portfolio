@@ -19,7 +19,6 @@ export default function AboutSection({ title, summary, list }) {
         <ul className="card-list">
           {list.map((item, index) => (
             <li key={index} className="skill-item">
-              {/* Check if the item is a skill object with a 'level' property */}
               {typeof item === 'object' && item.level !== undefined ? (
                 <div className="skill-wrapper">
                   <span>{item.name}</span>
@@ -28,10 +27,8 @@ export default function AboutSection({ title, summary, list }) {
                       <span className="level-text">{item.level}%</span>
                     </div>
                   </div>
-                  <div className="fun-fact">{item.funFact}</div>
                 </div>
               ) : (
-                // If not a skill object, render the item as a simple string
                 <div className="list-item-wrapper">
                   <span>{item}</span>
                 </div>

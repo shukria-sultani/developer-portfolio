@@ -75,26 +75,7 @@ export default function Projects() {
               <div className="project-content">
                 <h3 className="project-name">{project.name}</h3>
                 
-                {/* Status & Featured Badges */}
-                <div className="project-badges">
-                  {project.featured && (
-                    <motion.span 
-                      className="featured-badge"
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    
-                    >
-                      🌟 Featured
-                    </motion.span>
-                  )}
-                   <motion.span
-                    animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                      className="status"
-                   >
-                     { project.status}
-                   </motion.span>
-                </div>
+               
 
                 {/* Conditional Rendering for Details */}
                 {expandedCard === project.name ? (

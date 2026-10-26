@@ -6,7 +6,7 @@ export default function About() {
   const experienceSummary =
     "I have about 2 years of experience in the IT field, including teaching computer programs and frontend development.";
   const skillsSummary =
-    "My core skills include JavaScript, React, CSS, HTML, Bootstrap with a strong focus on building responsive and accessible interfaces.";
+    "My core skills include JavaScript, React, CSS, HTML, Bootstrap, Tailwind with a strong focus on building responsive and accessible interfaces.";
   const funFactsSummary =
     "When I'm not coding, I enjoy meeting friends and reading novels.";
   const profileInfo = {
@@ -18,30 +18,37 @@ export default function About() {
     {
       name: "JavaScript",
       level: 90,
-      funFact: "I built my first website using JavaScript.",
     },
     {
       name: "React",
       level: 80,
-      funFact: "I love creating interactive UIs with React.",
     },
     {
       name: "HTML",
       level: 100,
-      funFact: "I enjoy structuring content semantically.",
     },
     {
       name: "CSS",
       level: 95,
-      funFact: "I have a passion for creative designs.",
     },
     {
       name: "Bootstrap",
       level: 90,
-      funFact: "I like using Bootstrap for rapid development.",
     },
-    { name: "Python", level: 50, funFact: "I am learning Python" },
-    { name: "Java", level: 40, funFact: "I am learning Java" },
+    {
+      name: "Tailwind",
+      level: 80,
+    },
+    {
+      name: "Docker",
+      level: 70,
+    },
+     {
+      name: "MySQL",
+      level: 60,
+    },
+    { name: "Python", level: 50},
+    { name: "Java", level: 40},
   ];
 
   const funFactsList = [
@@ -80,7 +87,7 @@ export default function About() {
             title="Skills"
             summary={skillsSummary}
             list={skillsList}
-            showProgressBars={true} // Pass a prop to indicate progress bars
+            showProgressBars={true} 
           />
           <AboutSection
             title="Fun Facts"

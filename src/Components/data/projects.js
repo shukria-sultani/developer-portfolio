@@ -6,9 +6,21 @@ import innovatershouseDesktop from "../../assets/images/Macbook-Air-innovatersho
 import invoiceDesktop from "../../assets/images/Macbook-Air-invoice.png"
 import ployGlotDesktop from "../../assets/images/polyGlot-Desktop.png"
 import popChoiceDesktop from "../../assets/images/popChoice-Desktop.png"
+import smartNoteDesktop from "../../assets/images/Macbook-Air-smart-note-app.netlify.app.png"
 const projects = [
-    {
+      {
+      
       id: 1,
+      name: "SmartNote",
+      imageDesktop: smartNoteDesktop,
+      description:
+        "An AI Powered web app for adding and manipulating notes, taking quizzes to foster understanding, and get AI generated note summary",
+      liveLink: "https://smart-note-app.netlify.app/",
+      githubLink: "https://github.com/shukria-sultani/SmartNote",
+      techStack: ["React", "CSS", "OpenAI API "],    },
+    {
+
+      id: 2,
       name: "Weather All Around",
       imageDesktop: weatherDesktop,
       description:
@@ -16,11 +28,9 @@ const projects = [
       liveLink: "https://all-around-weather.netlify.app/",
       githubLink: "https://github.com/shukria-sultani/SheCodes-Final_Project",
       techStack: ["HTML", "CSS", "JavaScript", "API"],
-      featured: false,
-      status: 'Completed',
     },
     {
-      id: 2,
+      id: 3,
       name: "Sayyida-Nisa",
       imageDesktop: sayyidanisaDesktop,
       description:
@@ -28,11 +38,9 @@ const projects = [
       liveLink: "https://sayyida-nisa.netlify.app/",
       githubLink: "httpss://github.com/shukria-sultani/Sayyida-Nisa",
       techStack: ["React",  "Bootstrap", "CSS"],
-      featured: true,
-      status: 'Completed',
     },
     {
-      id: 3,
+      id: 4,
       name: "Kalam-e-Ali",
       imageDesktop: kalamealiDesktop,
       description:
@@ -40,11 +48,9 @@ const projects = [
       liveLink: "https://kalam-e-ali.netlify.app/",
       githubLink: "https://github.com/shukria-sultani/Imam-Ali-Sayings",
       techStack: ["React", "Bootstrap", "CSS"],
-      featured: true,
-      status: 'In Progress',
     },
     {
-      id: 4,
+      id: 5,
       name: "InnovatersHouse",
       imageDesktop: innovatershouseDesktop,
       description:
@@ -52,11 +58,9 @@ const projects = [
       liveLink: "https://shukria-sultani.github.io/InnovatersHouse/index.html",
       githubLink: "https://github.com/shukria-sultani/InnovatersHouse",
       techStack: ["HTML", "CSS", "JavaScript"],
-      featured: false,
-      status: 'In Progress',
     },
     {
-      id: 5,
+      id: 6,
       name: "Client and Invoice Management",
       imageDesktop: invoiceDesktop,
       description:
@@ -65,11 +69,9 @@ const projects = [
         "https://shukria-sultani.github.io/freelance-invoice-app/index.html",
       githubLink: "https://github.com/shukria-sultani/freelance-invoice-app",
       techStack: ["HTML", "CSS", "JavaScript", "Chart.js"],
-      featured: true,
-      status: 'Completed',
     },
     {
-      id: 6,
+      id: 7,
       name: "PolyGlot Translation App",
       imageDesktop: ployGlotDesktop,
       description:
@@ -78,11 +80,9 @@ const projects = [
         "https://poly-glot-tanslation.netlify.app/",
       githubLink: "https://github.com/shukria-sultani/translation_app",
       techStack: ["React", "CSS","API", "AI"],
-      featured: true,
-      status: 'Completed',
     },
        {
-      id: 7,
+      id: 8,
       name: "PopChoice Movie Recommender",
       imageDesktop: popChoiceDesktop,
       description:
@@ -91,8 +91,6 @@ const projects = [
         "https://pop-choice.netlify.app/",
       githubLink: "https://github.com/shukria-sultani/PopChoice",
       techStack: ["React", "CSS", "API", "AI",],
-      featured: true,
-      status: 'Completed',
     },
   ];
 export { projects };
